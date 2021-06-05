@@ -1,6 +1,7 @@
 # app/models/invoice
 
 class Invoice < ApplicationRecord
+  enum status: [ 'in progress', :completed, :cancelled ] # 0 => in progress, 1 => completed, etc 
   belongs_to :customer
   has_many :invoice_items, dependent: :destroy
   has_many :items, through: :invoice_items
