@@ -8,7 +8,7 @@
       <%= form_with model: [:admin, @invoice], local: true do |f| %>
         <% # TODO: pull array into model, downcase params in update to conform to db case%>
         <% # andddd write tests %>
-        <%= f.select :status, ['in progress', 'completed', 'cancelled'] %>
+        <%= f.select :status, ['in progress', 'completed', 'cancelled']%>
         <%= f.submit %>
       <% end %>
         <%= @invoice.status.capitalize %>

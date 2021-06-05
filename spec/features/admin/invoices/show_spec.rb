@@ -18,5 +18,13 @@ RSpec.describe 'invoices show page', type: :feature do
   end
 
   describe 'page functionality' do
+    it 'can update invoice status' do
+      visit "/admin/invoices/#{@invoice.id}"
+      expected_status = @invoice.status.capitalize
+      expect(page).to have_select('invoice_status', selected: expected_status)
+      select expected_status, from: 'invoice_status' 
+      expect(current_path).to eq "/admin/invoices/#{invoice.id}"
+      expect(@invoice.reload.status).to eq 'cancelled'
+    end
   end
 end
