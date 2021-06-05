@@ -33,5 +33,10 @@ RSpec.describe Invoice do
   end
 
   describe 'instance methods' do
+    # Test pulls instance from test db to test against
+    it 'has array of available status options' do
+      single_invoice = Invoice.last
+      expect(single_invoice.statuses).to eq ['in progress', 'completed', 'cancelled']
+    end
   end
 end

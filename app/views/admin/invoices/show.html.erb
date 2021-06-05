@@ -6,12 +6,12 @@
     <td><%= @invoice.created_at.strftime("%A, %B %d, %Y")  %></td>
     <td>
       <%= form_with model: [:admin, @invoice], local: true do |f| %>
-        <% # TODO: pull array into model, downcase params in update to conform to db case%>
-        <% # andddd write tests %>
-        <%= f.select :status, ['in progress', 'completed', 'cancelled']%>
+        <%= f.select :status,
+            # Below we're retaining the correct formatting of the string in the db,
+            # while capitalizing for readability on the front-end. See options_for_select for more info
+            options_for_select(@invoice.statuses.map { |s| [s.capitalize, s] }, @invoice.status)%>
         <%= f.submit %>
       <% end %>
-        <%= @invoice.status.capitalize %>
     </td>
   </tr>
 </table>

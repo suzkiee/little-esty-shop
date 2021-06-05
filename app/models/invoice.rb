@@ -11,4 +11,9 @@ class Invoice < ApplicationRecord
   def self.filter_by_unshipped_order_by_age
     joins(:invoice_items).distinct.select("invoices.id, invoices.created_at").where.not(invoice_items: {status: 'shipped'}).order(:created_at)
   end
+
+  def statuses
+    ['in progress', 'completed', 'cancelled']
+  end
+
 end
