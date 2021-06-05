@@ -1,0 +1,9 @@
+<h2>Invoice #<%= @invoice.id %></h2>
+
+<table>
+  <tr>
+    <td><%= @invoice.customer.first_name + " " + @invoice.customer.last_name  %></td>
+    <td><%= @invoice.created_at.strftime("%A, %B %d, %Y")  %></td>
+    <td><strong><%= @invoice.status.capitalize %></strong></td>
+  </tr>
+</table>
