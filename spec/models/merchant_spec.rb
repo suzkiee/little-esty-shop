@@ -15,13 +15,14 @@ RSpec.describe Merchant do
   end
 
   describe 'instance methods' do
-    it 'collects enabled items' do
-      expect(@gary.enabled_items).to eq([@item_1])
-    end
+    it '#enabled_items' do
+      it 'collects enabled items' do
+        expect(@gary.enabled_items).to eq([@item_1])
+      end
 
-
-    it 'collects disabled items' do
-      expect(@gary.disabled_items).to eq([@item_2])
+      it 'collects disabled items' do
+       expect(@gary.disabled_items).to eq([@item_2])
+     end
     end
   end
 end

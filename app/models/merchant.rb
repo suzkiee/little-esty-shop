@@ -74,4 +74,15 @@ class Merchant < ApplicationRecord
   def enabled_items
     items.where(enabled: "enabled")
   end
+
+  def top_five_items
+
+    select('merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) as total_revenue')
+    .joins(:transactions)
+    .where("result = ?", 1)
+    .group(:id)
+    .order('total_revenue desc')
+    .limit(5)
+
+  end
 end
