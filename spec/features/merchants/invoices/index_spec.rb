@@ -12,9 +12,9 @@ RSpec.describe 'Merchant invoices index page' do
     @customer = Customer.create!(first_name: 'Joey', last_name: 'Ondricka') 
     @invoice = Invoice.create!(customer_id: @customer.id, status: 'completed')
     @invoice_2 = Invoice.create!(customer_id: @customer.id, status: 'completed')
-    InvoiceItem.create!(item_id: @item.id, invoice_id: @invoice.id, quantity: 539, unit_price: 13635, status: 'packaged')
-    InvoiceItem.create!(item_id: @item_2.id, invoice_id: @invoice.id, quantity: 539, unit_price: 13635, status: 'packaged')
-    InvoiceItem.create!(item_id: @item_3.id, invoice_id: @invoice.id, quantity: 539, unit_price: 13635, status: 'packaged')
+    InvoiceItem.create!(item_id: @item.id, invoice_id: @invoice.id, quantity: 539, unit_price: 13635, status: 1)
+    InvoiceItem.create!(item_id: @item_2.id, invoice_id: @invoice.id, quantity: 539, unit_price: 13635, status: 1)
+    InvoiceItem.create!(item_id: @item_3.id, invoice_id: @invoice.id, quantity: 539, unit_price: 13635, status: 1)
   end
 
   describe 'display' do
@@ -25,6 +25,12 @@ RSpec.describe 'Merchant invoices index page' do
       expect(page).to_not have_content("#{@invoice_2.id}")
     end
 
-    it 'links to each merchant invoice show page'
+    it 'links to each merchant invoice show page' do
+      visit "/merchants/#{@merchant.id}/invoices"
+
+      click_on("INVOICE ##{@invoice.id}")
+  
+      expect(current_path).to eq("/merchants/#{@merchant.id}/invoices/#{@invoice.id}")
+    end
   end
 end
