@@ -13,5 +13,12 @@ class Item < ApplicationRecord
   end
 
   def top_day
+    invoices
+    .joins(:transactions)
+    .where("transactions.result = 'success'")
+    .select('invoices.created_at, sum(invoice_items.unit_price * invoice_items.quantity)')
+    .group(:created_at)
+    .order("sum(invoice_items.unit_price * invoice_items.quantity) desc, created_at desc")
+    .first.created_at.to_date
   end
 end

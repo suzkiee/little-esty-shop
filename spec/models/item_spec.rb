@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item do
   before(:each) do
+    @item_day = Item.find(1)
     @merchant = Merchant.create!(name: 'Sally Handmade')
     @item =  @merchant.items.create!(name: 'Qui Esse', description: 'Lorem ipsim', unit_price: 75107)
     @item_2 =  @merchant.items.create!(name: 'Essie', description: 'Lorem ipsim', unit_price: 20112)
@@ -28,7 +29,7 @@ end
   describe 'instance methods' do
     it '#top_day' do
 
-      expect(@item_2.top_day).to eq()
+      expect(@item_day.top_day.to_s).to eq("2012-03-25")
     end
   end
 end
