@@ -6,7 +6,7 @@ RSpec.describe Item do
     @item =  @merchant.items.create!(name: 'Qui Esse', description: 'Lorem ipsim', unit_price: 75107)
     @item_2 =  @merchant.items.create!(name: 'Essie', description: 'Lorem ipsim', unit_price: 20112)
     @item_3 = @merchant.items.create!(name: 'Glowfish Markdown', description: 'Lorem ipsim', unit_price: 55542)
-    @customer = Customer.create!(first_name: 'Joey', last_name: 'Ondricka') 
+    @customer = Customer.create!(first_name: 'Joey', last_name: 'Ondricka')
     @invoice = Invoice.create!(customer_id: @customer.id, status: 'completed')
     InvoiceItem.create!(item_id: @item.id, invoice_id: @invoice.id, quantity: 539, unit_price: 13635, status: 1)
     InvoiceItem.create!(item_id: @item_2.id, invoice_id: @invoice.id, quantity: 539, unit_price: 13635, status: 1)
@@ -26,5 +26,9 @@ end
   end
 
   describe 'instance methods' do
+    it '#top_day' do
+
+      expect(@item_2.top_day).to eq()
+    end
   end
 end

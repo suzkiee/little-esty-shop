@@ -23,6 +23,7 @@
         <li id=<%= "T5-#{item.id}" %>>
           <%= link_to item.name, "/merchants/#{@merchant.id}/items/#{item.id}" %>
           <%= button_to "Disable", "/merchants/#{@merchant.id}/items/#{item.id}", method: :patch, params: {enabled: "disabled"} %>
+          <p> Top selling date for <%= item.name %> was <%= item.top_day %></p>
     <% end %>
 </ul>
 

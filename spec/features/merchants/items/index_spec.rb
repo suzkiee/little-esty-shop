@@ -7,29 +7,6 @@ RSpec.describe 'merchant items index' do
     @item_1 = Item.find(1)
     @item_2 = Item.find(2)
     @item_3 = Item.find(37)
-    # @merchant_1 = Merchant.create!( name:"Clothing")
-    # @merchant_2 = Merchant.create!( name:"Food")
-    #
-    # @item_1       = @merchant_1.items.create!( name:"Boots",
-    #                                     description: "Leather",
-    #                                     unit_price: 50,
-    #                                     enabled: "enabled"
-    #                                   )
-    # @item_2       = @merchant_1.items.create!( name:"Jacket",
-    #                                     description: "Leather",
-    #                                     unit_price: 100,
-    #                                     enabled: "enabled"
-    #                                   )
-    # @item_3       = @merchant_1.items.create!( name:"Sweater",
-    #                                     description: "Wool",
-    #                                     unit_price: 25,
-    #                                     enabled: "disabled"
-    #                                   )
-    # @item_4       = @merchant_2.items.create!( name:"Apple",
-    #                                     description: "Eat it",
-    #                                     unit_price: 5,
-    #                                     enabled: "disabled"
-    #                                   )
   end
 
   it 'displays the name of the Merchant and no others' do
