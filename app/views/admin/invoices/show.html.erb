@@ -1,0 +1,34 @@
+<h2>Invoice #<%= @invoice.id %></h2>
+
+<section id="revenue">
+  <strong>This invoice is expected to generate $<%= @invoice.revenue / 100.0 %></strong>
+</section>
+<table>
+  <tr>
+    <td><%= @invoice.customer.full_name %></td>
+    <td><%= @invoice.created_at.strftime("%A, %B %d, %Y")  %></td>
+    <td>
+      <%= form_with model: [:admin, @invoice], local: true do |f| %>
+        <%= f.select :status,
+            # Below we're retaining the correct formatting of the string in the db,
+            # while capitalizing for readability on the front-end. See options_for_select for more info
+            options_for_select(@invoice.statuses.map { |s| [s.capitalize, s] }, @invoice.status)%>
+        <%= f.submit %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<section id="invoice-items">
+  <h3>Invoice Items</h3>
+  <% @invoice.invoice_items.each do |inv_item| %>
+    <div id="item-<%= inv_item.id %>">
+      <strong><%= inv_item.item.name %></strong>
+      <ul>
+        <li>Price: $<%= inv_item.unit_price / 100.0 %></li>
+        <li>Quantity: <%= inv_item.quantity %> units</li>
+        <li>Shipping Status: <%= inv_item.status.capitalize %></li>
+      </ul>
+    </div>
+  <% end %>
+</section>
