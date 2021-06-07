@@ -42,6 +42,10 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'factory_bot'
 
+# API Connection and JSON parsing
+require 'faraday'
+require 'json'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
