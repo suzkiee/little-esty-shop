@@ -66,11 +66,11 @@ class Merchant < ApplicationRecord
   end
 
   def disabled_items
-    items.where(enabled: "disabled")
+    items.where(enabled: 1)
   end
 
   def enabled_items
-    items.where(enabled: "enabled")
+    items.where(enabled: 0)
   end
 
   def top_five_items
