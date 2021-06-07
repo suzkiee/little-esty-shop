@@ -17,11 +17,10 @@ class Merchant < ApplicationRecord
   end
 
   def top_revenue_day
-    invoices
-    .joins(:transactions)
+    transactions
     .where("transactions.result = 'success'")
     .select("invoices.created_at, sum(invoice_items.quantity * invoice_items.unit_price) as total_revenue")
-    .group(:created_at)
+    .group(invoices: :created_at)
     .order("total_revenue desc, created_at desc")
     .first
     .created_at
