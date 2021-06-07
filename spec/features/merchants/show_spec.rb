@@ -62,7 +62,7 @@ RSpec.describe 'Merchants dashboard show page' do
 
       first(:link, "#{@invoice.id}").click
 
-      expect(current_path).to eq("/merchants/#{@merchant.id}/invoices")
+      expect(current_path).to eq("/merchants/#{@merchant.id}/invoices/#{@invoice.id}")
     end
 
     it 'contains a table showing the top 5 customers by successful transactions' do
