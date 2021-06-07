@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'invoices show page', type: :feature do
   before(:all) do
     @invoice = Invoice.first
+    @first_invoice_item = @invoice.invoice_items.first
+    @last_invoice_item = @invoice.invoice_items.last
   end
 
   describe 'page appearance' do
@@ -14,6 +16,20 @@ RSpec.describe 'invoices show page', type: :feature do
       expect(page).to have_content date
       expect(page).to have_content @invoice.customer.first_name
       expect(page).to have_content @invoice.customer.last_name
+    end
+
+    it 'has information about all of the invoice\'s items' do
+      visit "/admin/invoices/#{@invoice.id}"
+      first_exp_price = "$#{@first_invoice_item.unit_price / 100.0}"
+      last_exp_price = "$#{@last_invoice_item.unit_price / 100.0}"
+      expect(page).to have_content @first_invoice_item.item.name
+      expect(page).to have_content @first_invoice_item.quantity
+      expect(page).to have_content first_exp_price
+      expect(page).to have_content @first_invoice_item.status.capitalize
+      expect(page).to have_content @last_invoice_item.item.name
+      expect(page).to have_content @last_invoice_item.quantity
+      expect(page).to have_content last_exp_price
+      expect(page).to have_content @last_invoice_item.status.capitalize
     end
   end
 

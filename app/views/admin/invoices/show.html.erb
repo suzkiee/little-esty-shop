@@ -15,3 +15,17 @@
     </td>
   </tr>
 </table>
+
+<section id="invoice-items">
+  <h3>Invoice Items</h3>
+  <% @invoice.invoice_items.each do |inv_item| %>
+    <div id="item-<%= inv_item.id %>">
+      <strong><%= inv_item.item.name %></strong>
+      <ul>
+        <li>Price: $<%= inv_item.unit_price / 100.0 %></li>
+        <li>Quantity: <%= inv_item.quantity %> units</li>
+        <li>Shipping Status: <%= inv_item.status.capitalize %></li>
+      </ul>
+    </div>
+  <% end %>
+</section>
