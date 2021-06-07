@@ -4,13 +4,14 @@ require 'pry'
 
 class APIConnection
   attr_reader :data
+  REPO_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop'
 
   def initialize
-    @data = repo_connect
+    @data = connect(REPO_PATH)
   end
 
-  def repo_connect
-    response = Faraday.get('https://api.github.com/repos/suzkiee/little-esty-shop')
+  def connect(path)
+    response = Faraday.get(path)
     if !response.status == 200
       puts "There was an error in connecting"
     else
@@ -18,9 +19,10 @@ class APIConnection
       JSON.parse(response.body, symbolize_names: true)
     end
   end
+
 end
 
-api = APIConnection.new
+repo = APIConnection.new
 binding.pry
 # in pry, calling 'api.data' will return the repo's information as a hash
 
