@@ -21,6 +21,7 @@ class Admin::MerchantsController < ApplicationController
     @merchants_enabled = Merchant.filter_by_enabled
     @merchants_disabled = Merchant.filter_by_disabled
     @top_five_merchants = Merchant.top_five
+    # require 'pry'; binding.pry
   end
 
   def new
@@ -28,16 +29,18 @@ class Admin::MerchantsController < ApplicationController
   end
 
   def show
-  @merchant = Merchant.find(params[:id])
+    @merchant = Merchant.find(params[:id])
   end
 
   def update
     merchant = Merchant.find(params[:id])
-    merchant.update(merchant_params)
-    merchant.save
     if params.include? :index_redirect
+      merchant.toggle(:enabled)
+      merchant.save
       redirect_to action: 'index'
     else
+      merchant.update(merchant_params)
+      merchant.save
       flash[:notice] = "You have successfully updated this merchant!"
       redirect_to action: 'show', id: params[:id]
     end
