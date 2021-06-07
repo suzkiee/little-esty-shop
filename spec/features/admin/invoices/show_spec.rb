@@ -31,6 +31,14 @@ RSpec.describe 'invoices show page', type: :feature do
       expect(page).to have_content last_exp_price
       expect(page).to have_content @last_invoice_item.status.capitalize
     end
+
+    it 'lists total revenue from this invoice' do
+      visit "/admin/invoices/#{@invoice.id}"
+      exp_revenue = "$#{@invoice.revenue / 100.0}"
+      within "section#revenue" do
+        expect(page).to have_content exp_revenue
+      end
+    end
   end
 
   describe 'page functionality' do
