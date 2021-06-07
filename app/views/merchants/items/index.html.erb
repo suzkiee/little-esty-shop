@@ -1,6 +1,6 @@
 <%= @merchant.name %>
 
-<ul id= "enabled">
+<ul id= '#enabled'>
   <% @merchant.enabled_items.each do |item| %>
         <li id=<%= "id-#{item.id}" %>>
           <%= link_to item.name, "/merchants/#{@merchant.id}/items/#{item.id}" %>
@@ -15,6 +15,15 @@
           <%= link_to item.name, "/merchants/#{@merchant.id}/items/#{item.id}" %>
           <%= button_to "Enable", "/merchants/#{@merchant.id}/items/#{item.id}", method: :patch, params: {enabled: 0} %>
         </li>
+    <% end %>
+</ul>
+
+<ul id= "#top_5">
+  <% @merchant.top_five_items.each do |item| %>
+        <li id=<%= "T5-#{item.id}" %>>
+          <%= link_to item.name, "/merchants/#{@merchant.id}/items/#{item.id}" %>
+          <%= button_to "Disable", "/merchants/#{@merchant.id}/items/#{item.id}", method: :patch, params: {enabled: "disabled"} %>
+          <p> Top selling date for <%= item.name %> was <%= item.top_day %></p>
     <% end %>
 </ul>
 
