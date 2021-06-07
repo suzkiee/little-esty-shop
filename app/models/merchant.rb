@@ -20,9 +20,9 @@ class Merchant < ApplicationRecord
     invoices
     .joins(:transactions)
     .where("transactions.result = 'success'")
-    .select("invoices.created_at, sum(invoice_items.unit_price * invoice_items.quantity)")
+    .select("invoices.created_at, sum(invoice_items.quantity * invoice_items.unit_price) as total_revenue")
     .group(:created_at)
-    .order("sum(invoice_items.unit_price * invoice_items.quantity) desc, created_at desc")
+    .order("total_revenue desc, created_at desc")
     .first
     .created_at
     .to_date

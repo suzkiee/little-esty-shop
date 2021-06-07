@@ -51,11 +51,11 @@ RSpec.describe Merchant do
       end
     end
     it 'collects enabled items' do
-      expect(@gary.enabled_items).to eq([@item_1])
+      expect(@gary.enabled_items).to include(@item_1)
     end
 
     it '#disabled_items' do
-      expect(@gary.disabled_items).to eq([@item_2])
+      expect(@gary.disabled_items).to include(@item_2)
     end
 
     it '#top_five_items' do
