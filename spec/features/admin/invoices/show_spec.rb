@@ -22,9 +22,10 @@ RSpec.describe 'invoices show page', type: :feature do
       visit "/admin/invoices/#{@invoice.id}"
       expected_status = @invoice.status.capitalize
       expect(page).to have_select('invoice_status', selected: expected_status)
-      select expected_status, from: 'invoice_status' 
+      select 'Completed', from: 'invoice_status' 
+      click_button 'Update Invoice'
       expect(current_path).to eq "/admin/invoices/#{@invoice.id}"
-      expect(@invoice.reload.status).to eq 'cancelled'
+      expect(@invoice.reload.status).to eq 'completed'
     end
   end
 end

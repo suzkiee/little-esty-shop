@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <td><%= @invoice.customer.first_name + " " + @invoice.customer.last_name  %></td>
+    <td><%= @invoice.customer.full_name %></td>
     <td><%= @invoice.created_at.strftime("%A, %B %d, %Y")  %></td>
     <td>
       <%= form_with model: [:admin, @invoice], local: true do |f| %>

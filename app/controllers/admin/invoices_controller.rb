@@ -21,25 +21,21 @@ class Admin::InvoicesController < ApplicationController
     @invoices = Invoice.all
   end
 
-  def new
-  end
-
   def show
-  @invoice = Invoice.find(params[:id])
+    @invoice = Invoice.find(params[:id])
   end
 
   def update
-    invoice = Invoice.find(params[:id])
-    invoice.update(invoice)
-    invoice.save
+    @invoice = Invoice.find(params[:id])
+    @invoice.update(invoice_params)
 
-    redirect_to action: 'show', id: params[:id]
+    render 'show'
   end
 
   private
 
   def invoice_params
-    params.permit(:status,
+    params.require(:invoice).permit(:status,
                   :customer_id)
   end
 end
