@@ -16,4 +16,9 @@ class Invoice < ApplicationRecord
     ['in progress', 'completed', 'cancelled']
   end
 
+  # Utilizes class method from InvoiceItems
+  def revenue
+    invoice_items.total_revenue
+  end
+
 end

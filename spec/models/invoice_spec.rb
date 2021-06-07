@@ -38,5 +38,11 @@ RSpec.describe Invoice do
       single_invoice = Invoice.last
       expect(single_invoice.statuses).to eq ['in progress', 'completed', 'cancelled']
     end
+
+    it 'calculates total potential revenue' do
+      single_invoice = Invoice.last
+      total_revenue = single_invoice.invoice_items.total_revenue # utilizes class method from InvoiceItems
+      expect(single_invoice.revenue).to eq total_revenue
+    end
   end
 end
