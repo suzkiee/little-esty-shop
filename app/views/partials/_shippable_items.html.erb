@@ -12,7 +12,7 @@
         <td>
           #<%= link_to "#{item.invoice_id}", "/merchants/#{@merchant.id}/invoices/#{item.invoice_id}" %>
         </td>
-        <td><%= item.invoice_date.strftime('%A, %B %d, %Y') %></td>
+        <td><%= item.invoice_date.strftime("%m/%d/%Y")%></td>
       </tr>
     <% end %>
   </table>
