@@ -1,23 +1,31 @@
 class GithubService
   REPO_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop'
+  USER_PATH = 'https://api.github.com/users/'
 
+  # This method can intake any path so API calls can be flexible.
   def self.connect(path)
-    response = Faraday.get(path)
+    validate_connection(Faraday.get(path))
+  end
+
+  # The following two methods utilize pre-specified paths that are common
+  def self.connect_repo
+    connect(REPO_PATH)
+  end
+
+  def self.connect_user(username)
+    connect(USER_PATH + username)
+  end
+
+  # Could add better error if API response is not 200, but fine for our purposes
+  def validate_connection(response)
     if !response.status == 200
-      puts "There was an error in connecting"
+      # Incorporate flash alert here?
+      nil
     else
-      puts "Connection successful"
       JSON.parse(response.body, symbolize_names: true)
     end
   end
 
-  def self.connect_to_repo
-    response = Faraday.get(REPO_PATH)
-    if !response.status == 200
-      puts "There was an error in connecting"
-    else
-      puts "Connection successful"
-      JSON.parse(response.body, symbolize_names: true)
-    end
-  end
 end
+
+require 'pry'; binding.pry
