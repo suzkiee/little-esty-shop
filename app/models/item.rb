@@ -10,7 +10,7 @@ class Item < ApplicationRecord
 
   def self.not_yet_shipped
     joins(:invoices).select("items.name, invoices.id as invoice_id, invoices.created_at as invoice_date")
-    .where.not('invoice_items.status = 2')
+    .where.not(invoice_items: {status: "shipped"})
     .order("invoice_date desc")
   end
 
