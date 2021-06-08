@@ -35,4 +35,4 @@
 
 # Ignore coverage directory
 /coverage/*
-/services/token.rb
+app/services/token.rb

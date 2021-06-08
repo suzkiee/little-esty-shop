@@ -1,14 +1,10 @@
-require 'tokens'
+require 'token'
 
 class GithubService
   REPO_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop'
   USER_PATH = 'https://api.github.com/users/'
   PULLS_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/pulls?state=all'
   COLLABORATOR_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/collaborators'
-<<<<<<< HEAD
-=======
-  TOKEN = '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'
->>>>>>> bec7df09164d8b0a6dc0dd64317106a9b7525333
 
   # :commits_url=>"https://api.github.com/repos/suzkiee/little-esty-shop/commits{/sha}",
   # :git_commits_url=>"https://api.github.com/repos/suzkiee/little-esty-shop/git/commits{/sha}",
@@ -43,7 +39,6 @@ class GithubService
       nil
     else
       JSON.parse(response.body, symbolize_names: true)
-      require 'pry'; binding.pry
     end
   end
 end
