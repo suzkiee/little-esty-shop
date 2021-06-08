@@ -3,7 +3,6 @@ class GithubService
   USER_PATH = 'https://api.github.com/users/'
   PULLS_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/pulls?state=all'
   COLLABORATOR_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/collaborators'
-  # TOKEN = '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' #netia's
   TOKEN = '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'
 
   # :commits_url=>"https://api.github.com/repos/suzkiee/little-esty-shop/commits{/sha}",
