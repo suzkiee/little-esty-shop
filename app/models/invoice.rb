@@ -9,7 +9,10 @@ class Invoice < ApplicationRecord
   has_many :merchants, through: :items
 
   def self.filter_by_unshipped_order_by_age
-    joins(:invoice_items).distinct.select("invoices.id, invoices.created_at").where.not(invoice_items: {status: 'shipped'}).order(:created_at)
+    joins(:invoice_items)
+    .distinct.select("invoices.id, invoices.created_at")
+    .where.not(invoice_items: {status: 'shipped'})
+    .order(:created_at)
   end
 
   def statuses

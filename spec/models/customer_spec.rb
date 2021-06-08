@@ -72,8 +72,8 @@ RSpec.describe Customer do
         @invoice_6.transactions.create!(credit_card_number: 1322556769, credit_card_expiration_date: nil,result: 'success')
         @invoice_7.transactions.create!(credit_card_number: 1322556769, credit_card_expiration_date: nil,result: 'success')
 
-        top_customers = @merchant.customers.top_five(@merchant_id)
-     
+        top_customers = Customer.top_five_by_merchant(@merchant_id)
+
         expect(top_customers[0].name).to eq("Yaho Yoo")
         expect(top_customers[1].name).to eq("Andrew Brae")
         expect(top_customers[2].name).to eq("Joey Ondricka")
