@@ -17,7 +17,7 @@ class GithubService
   end
 
   # Could add better error if API response is not 200, but fine for our purposes
-  def validate_connection(response)
+  def self.validate_connection(response)
     if !response.status == 200
       # Incorporate flash alert here?
       nil
@@ -27,5 +27,3 @@ class GithubService
   end
 
 end
-
-require 'pry'; binding.pry
