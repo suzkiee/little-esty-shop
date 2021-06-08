@@ -1,9 +1,10 @@
+require 'tokens'
+
 class GithubService
   REPO_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop'
   USER_PATH = 'https://api.github.com/users/'
   PULLS_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/pulls?state=all'
   COLLABORATOR_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/collaborators'
-  TOKEN = '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'
 
   # :commits_url=>"https://api.github.com/repos/suzkiee/little-esty-shop/commits{/sha}",
   # :git_commits_url=>"https://api.github.com/repos/suzkiee/little-esty-shop/git/commits{/sha}",
