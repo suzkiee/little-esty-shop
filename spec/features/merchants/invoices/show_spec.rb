@@ -43,13 +43,13 @@ RSpec.describe 'Merchant invoice show page' do
     it 'can update items status through dropdown list' do
       visit "/merchants/#{@merchant.id}/invoices/#{@invoice.id}"
 
-      expect(page).to have_button("Update Item Status")
+      expect(page).to have_button("Save")
       
       within first('.status-update') do
         expect(page).to have_content("packaged")
 
         select "shipped"
-        click_on "Update Item Status"
+        click_on "Save"
       end
 
       expect(page).to have_content("shipped")
@@ -58,8 +58,8 @@ RSpec.describe 'Merchant invoice show page' do
 
     it 'lists total revenue of all items on invoice' do 
       visit "/merchants/#{@merchant.id}/invoices/#{@invoice.id}"
- 
-      expect(page).to have_content("Expected Total Revenue: $13,600.00")
+      
+      expect(page).to have_content("Expected Total Revenue: $136.00")
     end
   end
 end

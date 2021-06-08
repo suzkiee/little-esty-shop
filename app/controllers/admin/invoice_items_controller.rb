@@ -25,7 +25,7 @@ class Admin::InvoiceItemsController < ApplicationController
   end
 
   def show
-  @invoice_item = InvoiceItem.find(params[:id])
+    @invoice_item = InvoiceItem.find(params[:id])
   end
 
   def update
