@@ -1,0 +1,13 @@
+<h4>Disable Items</h4><br>
+<table style="text-align: center;" id= '#disabled' style='width: 100%; border-color: white;'>
+  <tr>
+    <th>Item</th>
+    <th>Status Toggle</th>
+  </tr>
+  <% @merchant.disabled_items.each do |item| %>
+        <tr id=<%= "id-#{item.id}" %>>
+          <td><%= link_to item.name, "/merchants/#{@merchant.id}/items/#{item.id}" %></td>
+          <td><%= button_to "Enable", "/merchants/#{@merchant.id}/items/#{item.id}", method: :patch, params: {enabled: "enabled"} %></td>
+        </tr>
+    <% end %>
+</table><br>

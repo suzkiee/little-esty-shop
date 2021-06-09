@@ -1,30 +1,15 @@
-<%= @merchant.name %>
+<h3 style="text-align: center;"><%= "#{@merchant.name}" %> </h3><br>
 
-<ul id= '#enabled'>
-  <% @merchant.enabled_items.each do |item| %>
-        <li id=<%= "id-#{item.id}" %>>
-          <%= link_to item.name, "/merchants/#{@merchant.id}/items/#{item.id}" %>
-          <%= button_to "Disable", "/merchants/#{@merchant.id}/items/#{item.id}", method: :patch, params: {enabled: "disabled"} %>
-        </li>
-    <% end %>
-</ul>
+<%= button_to 'New Item', "/merchants/#{@merchant.id}/items/new", method: :get %><br>
+<div class="row">
+  <div class="column" style="width: 50%">
+      <%= render partial: 'partials/enabled_items' %>
+  </div>
+  <div class="column" style="width: 50%">
+    <%= render partial: 'partials/disabled_items' %>
+  </div>
+</div><br>
 
-<ul id= "disabled">
-  <% @merchant.disabled_items.each do |item| %>
-        <li id=<%= "id-#{item.id}" %>>
-          <%= link_to item.name, "/merchants/#{@merchant.id}/items/#{item.id}" %>
-          <%= button_to "Enable", "/merchants/#{@merchant.id}/items/#{item.id}", method: :patch, params: {enabled: "enabled"} %>
-        </li>
-    <% end %>
-</ul>
-
-<ul id= "#top_5">
-  <% @merchant.top_five_items.each do |item| %>
-        <li id=<%= "T5-#{item.id}" %>>
-          <%= link_to item.name, "/merchants/#{@merchant.id}/items/#{item.id}" %>
-          <%= button_to "Disable", "/merchants/#{@merchant.id}/items/#{item.id}", method: :patch, params: {enabled: "disabled"} %>
-          <p> Top selling date for <%= item.name %> was <%= item.top_day %></p>
-    <% end %>
-</ul>
-
-<%= button_to 'New Item', "/merchants/#{@merchant.id}/items/new", method: :get %>
+<div class="column" style="width: 80%; ">
+  <%= render partial: 'partials/top_items' %>
+</div>
