@@ -32,6 +32,10 @@
     <% if !Rails.env.test? %>
      <h6 class="p-3 text-light">Find us on GitHub: <%= link_to GithubService.connect_repo[:name], GithubService.connect_repo[:html_url] %></h6>
      <h6 class="p-3 text-light"><%= "Repo has #{GithubRepo.new.num_merged_prs} pull requests and counting." %></h6>
+     <h6 class="p-3 text-light"> Repo Users: </h6>
+     <% GithubRepo.new.contributor_details.each do |username, commits| %>
+     <h7 class="p-3 text-light"> * <%= username %>: <%= commits %> commits </h7>
+     <% end %>
      <p class="p-3 text-light">©2021</p>
     <% end %>
    </div>

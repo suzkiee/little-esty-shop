@@ -4,14 +4,10 @@ class GithubService
   REPO_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop'
   PRSPECIFIC_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/pulls/74/commits'
   PULLS_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/pulls?state=all'
-  COLLABORATOR_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/commits'
-
-  # :commits_url=>"https://api.github.com/repos/suzkiee/little-esty-shop/commits{/sha}",
-  # :git_commits_url=>"https://api.github.com/repos/suzkiee/little-esty-shop/git/commits{/sha}",
+  CONTRIBUTOR_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/contributors'
 
   # This method can intake any path so API calls can be flexible.
   def self.connect(path)
-    # faraday = Faraday.new(headers: {'Authorization' => "token " + TOKEN})
     validate_connection(Faraday.get(path))
   end
 
@@ -20,7 +16,7 @@ class GithubService
     connect(REPO_PATH)
   end
 
-  def self.connect_user@
+  def self.connect_user
     connect(PRSPECIFIC_PATH)
   end
 
@@ -28,8 +24,8 @@ class GithubService
     connect(PULLS_PATH)
   end
 
-  def self.all_collaborators
-    connect(COLLABORATOR_PATH)
+  def self.all_contributors 
+    connect(CONTRIBUTOR_PATH)
   end
 
   # Could add better error if API response is not 200, but fine for our purposes
