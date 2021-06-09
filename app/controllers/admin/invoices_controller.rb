@@ -2,21 +2,6 @@
 
 class Admin::InvoicesController < ApplicationController
 
-  def create
-    Invoice.create(invoice_params)
-    redirect_to '/invoices'
-  end
-
-  def destroy
-    invoice = Invoice.find(params[:id])
-    invoice.destroy
-    redirect_to '/invoices'
-  end
-
-  def edit
-    @invoice = Invoice.find(params[:id])
-  end
-
   def index
     @invoices = Invoice.all
   end
