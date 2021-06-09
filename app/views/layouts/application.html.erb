@@ -9,9 +9,9 @@
   </head>
 
   <body>
-   <nav class="navbar navbar-expand navbar-light bg-esty">
+   <nav class="navbar navbar-expand navbar-light bg-esty" style="10rem;">
     <div class="container-fluid">
-      <a class="navbar-brand text-light" href="/">Little Esty Shop</a>
+      <a class="navbar-brand text-light" style="margin-left:20px;" href="/">Little Esty Shop</a>
       <div class="navbar-nav">
         <a class="nav-link text-light" <%= link_to "Admin Dashboard", "/admin" %></a>
         <a class="nav-link text-light" <%= link_to "Placeholder", "#" %></a>
@@ -21,14 +21,14 @@
    </nav>
 
    <!-- This container envelops everything within a page and applies padding -->
-   <div class="container-fluid p-4">
+   <div class="container-fluid p-4 footer">
      <% flash.each do |type, msg| %>
        <div class="success" style="position: relative; top: -50%"><%= msg %></div>
      <% end %>
      <%= yield %>
    </div>
 
-   <div class="d-flex justify-content-around bg-dark">
+   <div class="d-flex justify-content-around bg-dark" style="height: 10rem;">
      <h6 class="p-3 text-light">Created by Jermaine B, Netia I, Suzie K & Jamison G</h6>
      <p class="p-3 text-light">©2021</p>
    </div>
