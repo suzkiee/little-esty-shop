@@ -5,7 +5,12 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+
+ /* imported fonts */
+ @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+ 
+
+ :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -46,7 +51,8 @@
 
 body {
   margin: 0;
-  font-family: var(--bs-font-sans-serif);
+  /* font-family: var(--bs-font-sans-serif); */
+  font-family: 'Ubuntu', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -3925,6 +3931,7 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+
 .navbar > .container,
 .navbar > .container-fluid,
 .navbar > .container-sm,
@@ -3944,6 +3951,8 @@ textarea.form-control-lg {
   font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
+  font-family: 'Arvo', serif;
+  font-size: 2.5rem;
 }
 .navbar-nav {
   display: flex;
@@ -7411,7 +7420,11 @@ textarea.form-control-lg {
 }
 
 .bg-dark {
-  background-color: #212529 !important;
+  background-color: #2B628B !important;
+}
+
+.bg-esty {
+  background-color: #F58D5F !important;
 }
 
 .bg-body {

@@ -11,7 +11,7 @@ RSpec.describe "items show page" do
 
     expect(page).to have_content(@item_1.name)
     expect(page).to have_content(@item_1.description)
-    expect(page).to have_content("$75,107.00")
+    expect(page).to have_content("$751.07")
   end
 
   it "displays the item and its attributes" do
