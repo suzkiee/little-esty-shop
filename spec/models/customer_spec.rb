@@ -19,8 +19,6 @@ RSpec.describe Customer do
       end
     end
 
-    # I know this test is absolutely massive but there weren't enough relationships in the truncated data
-    # to properly test this method. I'll add these to the truncated data set tomorrow.
     describe 'top_customers_by_merchant' do
       it 'returns the top 5 customer with successful transactions by merchant' do
         merchant = Merchant.create!(name: 'Sally Handmade')
@@ -71,12 +69,12 @@ RSpec.describe Customer do
         invoice_7.transactions.create!(credit_card_number: 1322556769, credit_card_expiration_date: nil,result: 'success')
 
         top_customers = Customer.top_five_by_merchant(merchant.id)
-
+      
         expect(top_customers[0].name).to eq("Yaho Yoo")
         expect(top_customers[1].name).to eq("Andrew Brae")
         expect(top_customers[2].name).to eq("Joey Ondricka")
-        expect(top_customers[3].name).to eq("Blers Moushca")
-        expect(top_customers[4].name).to eq("Sjarn Max")
+        expect(top_customers[3].name).to eq("Sjarn Max")
+        expect(top_customers[4].name).to eq("Blers Moushca")
       end
     end
   end
