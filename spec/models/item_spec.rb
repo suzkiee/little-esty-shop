@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Item do
-  before(:each) do
-  end
 
   describe 'relationships' do
     it {should have_many :invoice_items}

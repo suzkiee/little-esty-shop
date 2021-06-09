@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'admin index page', type: :feature do
-  before(:each) do
-  end
 
   describe 'page appearance' do
     it 'alerts you that you are on the Little Esty welcome page' do

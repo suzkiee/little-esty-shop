@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe InvoiceItem do
-  before(:each) do
-
-  end
 
   describe 'relationships' do
     it {should belong_to :invoice}
@@ -17,8 +14,5 @@ RSpec.describe InvoiceItem do
         expect(InvoiceItem.total_revenue).to eq(60481323)
       end
     end
-  end
-
-  describe 'instance methods' do
   end
 end
