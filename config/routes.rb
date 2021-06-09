@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :items, except: :destroy
     resources :invoices
   end
-  
+
   namespace :admin do
     get '/', to: 'dashboard#index'
     resources :invoices, only: [:index, :show, :update]

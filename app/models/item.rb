@@ -9,16 +9,18 @@ class Item < ApplicationRecord
   enum enabled: [:enabled, :disabled]
 
   def self.not_yet_shipped
-    joins(:invoices).select("items.name, invoices.id as invoice_id, invoices.created_at as invoice_date").where.not('invoice_items.status = 2').order("invoice_date")
+    joins(:invoices).select("items.name, invoices.id as invoice_id, invoices.created_at as invoice_date")
+    .where.not(invoice_items: {status: "shipped"})
+    .order("invoice_date desc")
   end
 
   def top_day
     invoices
     .joins(:transactions)
     .where("transactions.result = 'success'")
-    .select('invoices.created_at, sum(invoice_items.unit_price * invoice_items.quantity)')
+    .select("invoices.created_at, sum(invoice_items.quantity * invoice_items.unit_price) as total_revenue")
     .group(:created_at)
-    .order("sum(invoice_items.unit_price * invoice_items.quantity) desc, created_at desc")
+    .order("total_revenue desc, created_at desc")
     .first.created_at.to_date
   end
 end

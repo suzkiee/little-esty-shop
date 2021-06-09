@@ -12,7 +12,7 @@ RSpec.describe Merchant do
     it {should have_many :invoice_items}
     it {should have_many :invoices}
     it {should have_many :transactions}
-    it {should have_many :customersd}
+    it {should have_many :customers}
   end
 
   describe 'class methods' do
@@ -47,15 +47,15 @@ RSpec.describe Merchant do
     describe '#top_revenue_day' do
       it 'provides the top revenue day for a given merchant' do
         top_merchant = Merchant.find(84)
-        expect(top_merchant.top_revenue_day).to eq('2012-03-26 07:54:10')
+        expect(top_merchant.top_revenue_day.to_s).to eq('2012-03-26')
       end
     end
     it 'collects enabled items' do
-      expect(@gary.enabled_items).to eq([@item_1])
+      expect(@gary.enabled_items).to include(@item_1)
     end
 
     it '#disabled_items' do
-      expect(@gary.disabled_items).to eq([@item_2])
+      expect(@gary.disabled_items).to include(@item_2)
     end
 
     it '#top_five_items' do

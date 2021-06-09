@@ -16,7 +16,7 @@ RSpec.describe 'updates item' do
     fill_in 'Name', with: 'Sneakers'
     click_on 'Update'
 
-    expect(current_path).to eq("/merchants/#{@merchant_1.id}/items")
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/items/#{@item_1.id}")
     expect(page).to have_content('Sneakers')
   end
 end
