@@ -1,6 +1,6 @@
 class GithubRepo
   attr_reader :data, :pull_requests, :team
-  
+
   def initialize
     @data = GithubService.connect_repo
     @pull_requests = GithubService.pull_requests
@@ -8,7 +8,9 @@ class GithubRepo
   end
 
   def num_merged_prs
+    require 'pry'; binding.pry
     @pull_requests.count do |pr|
+      require 'pry'; binding.pry
       pr[:merged_at]
     end
   end
