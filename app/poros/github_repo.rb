@@ -1,5 +1,6 @@
 class GithubRepo
-
+  attr_reader :data, :pull_requests, :team
+  
   def initialize
     @data = GithubService.connect_repo
     @pull_requests = GithubService.pull_requests
