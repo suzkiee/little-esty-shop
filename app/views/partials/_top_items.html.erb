@@ -1,0 +1,13 @@
+<h4>Top 5 Sold Items</h4><br>
+<table class="center" style="text-align: center;" id= "#top_5" style='width: 100%; border-color: white;'>
+  <tr>
+    <th>Item</th>
+    <th></th>
+  </tr>
+  <% @merchant.top_five_items.each do |item| %>
+        <tr id=<%= "T5-#{item.id}" %>>
+          <td><%= link_to item.name, "/merchants/#{@merchant.id}/items/#{item.id}" %></td>
+          <td>Top selling date for <%= item.name %> was <%= item.top_day %></td>
+        </tr>
+    <% end %>
+</table><br>
