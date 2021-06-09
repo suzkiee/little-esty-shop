@@ -1,6 +1,5 @@
 class GithubService
   REPO_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop'
-  PRSPECIFIC_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/pulls/74/commits'
   PULLS_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/pulls?state=all'
   CONTRIBUTOR_PATH = 'https://api.github.com/repos/suzkiee/little-esty-shop/contributors'
 
@@ -16,15 +15,11 @@ class GithubService
     connect(REPO_PATH)
   end
 
-  def self.connect_user
-    connect(PRSPECIFIC_PATH)
-  end
-
-  def self.num_pull_requests
+  def self.pull_requests
     connect(PULLS_PATH)
   end
 
-  def self.all_contributors 
+  def self.all_contributors
     connect(CONTRIBUTOR_PATH)
   end
 

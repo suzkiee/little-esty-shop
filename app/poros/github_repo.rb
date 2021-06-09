@@ -1,16 +1,15 @@
 class GithubRepo
-  attr_reader :data
 
   def initialize
     @data = GithubService.connect_repo
-    @pull_requests = GithubService.num_pull_requests
+    @pull_requests = GithubService.pull_requests
     @team = GithubService.all_contributors
   end
 
   def num_merged_prs
-    @pull_requests.find_all do |pr|
+    @pull_requests.count do |pr|
       pr[:merged_at]
-    end.count
+    end
   end
 
   def contributors
