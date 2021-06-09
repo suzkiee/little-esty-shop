@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'invoices index page', type: :feature do
-  xdescribe 'page appearance' do
+  describe 'page appearance' do
     it 'has links to every invoice' do
       visit '/admin/invoices'
 
-      expect(page).to have_link "Invoice ##{@invoices.first.id}"
-      expect(page).to have_link "Invoice ##{@invoices.last.id}"
-      click_link "Invoice ##{@invoices.first.id}"
-      expect(current_path).to eq "/admin/invoices/#{@invoices.first.id}"
+      expect(page).to have_link "Invoice ##{Invoice.first.id}"
+      expect(page).to have_link "Invoice ##{Invoice.last.id}"
+      click_link "Invoice ##{Invoice.first.id}"
+      expect(current_path).to eq "/admin/invoices/#{Invoice.first.id}"
     end
   end
 
